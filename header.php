@@ -1,6 +1,6 @@
 test conflict
 
-aaacccccc-addtest
+aaacccccc
 
 aaaaa
 
