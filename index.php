@@ -1,3 +1,16 @@
-<?php phpinfo();?>
-<?php echo test1?>
-<?php echo test2;?>
+
+<div id="app">
+  <button @click="count++">
+    Count is: {{ count }}
+  </button>
+</div>
+<script>
+import { createApp } from 'vue'
+createApp({
+  data() {
+    return {
+      count: 0
+    }
+  }
+}).mount('#app')
+</script>
