@@ -1,6 +1,12 @@
 # test-vue
 
 This template should help get you started developing with Vue 3 in Vite.
+- [test-vue](#test-vue)
+  - [Recommended IDE Setup](#recommended-ide-setup)
+  - [Customize configuration](#customize-configuration)
+  - [Project Setup](#project-setup)
+    - [Compile and Hot-Reload for Development](#compile-and-hot-reload-for-development)
+    - [Compile and Minify for Production](#compile-and-minify-for-production)
 
 ## Recommended IDE Setup
 
