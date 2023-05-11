@@ -6,6 +6,8 @@ import Learnsyntax from './components/Learnsyntax.vue'
 <template>
   <header>    
     <img style="width:125px; height:125px; margin:10px" src="./components/images/heartcat.jpg" />
+    <font-awesome-icon icon="fa-solid fa-user-secret" />
+
     <div class="wrapper">
       <Learnsyntax msg="Meow!!" txt="piu piu~" />
     </div>
