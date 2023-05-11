@@ -6,12 +6,13 @@ import Learnsyntax from './components/Learnsyntax.vue'
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+    <!-- <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" /> -->
+    <img style="width:125px; height:125px; margin:10px" src="./components/images/heartcat.jpg" />
     <!-- <div class="wrapper">
       <HelloWorld msg="You did it!" />
     </div> -->
     <div class="wrapper">
-      <Learnsyntax msg="Test Try" txt="Test Test" />
+      <Learnsyntax msg="Meow!!" txt="piu piu~" />
     </div>
   </header>
 
