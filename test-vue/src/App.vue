@@ -10,6 +10,7 @@ import Learnsyntax from './components/Learnsyntax.vue'
 
     <div class="wrapper">
       <Learnsyntax msg="Meow!!" txt="piu piu~" />
+      <div>test</div>
     </div>
   </header>
 
