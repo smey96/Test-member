@@ -7,7 +7,9 @@
       <h3>
         <slot name="heading"></slot>
       </h3>
-      <slot></slot>
+      <p>
+        <slot name="text"></slot>
+      </p>
     </div>
   </div>
 </template>
@@ -39,7 +41,9 @@ h3 {
   margin-bottom: 0.4rem;
   color: var(--color-heading);
 }
-
+p {
+  font-family: Courier;
+}
 @media (min-width: 1024px) {
   .item {
     margin-top: 0;

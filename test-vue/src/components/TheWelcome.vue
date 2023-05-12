@@ -5,6 +5,29 @@ import ToolingIcon from './icons/IconTooling.vue'
 import EcosystemIcon from './icons/IconEcosystem.vue'
 import CommunityIcon from './icons/IconCommunity.vue'
 import SupportIcon from './icons/IconSupport.vue'
+defineProps({
+  msg: {
+    type: String,
+    required: true
+  },
+  msg1: {
+    type: String,
+    required: true
+  },
+  msg11: {
+    type: String,
+    required: true
+  },
+  msg2: {
+    type: String,
+    required: true
+  }
+})
+const objectOfAttrs = {
+  id: 'container',
+  class: 'green',
+  style: 'font-family: courier;'
+}
 </script>
 
 <template>
@@ -12,11 +35,16 @@ import SupportIcon from './icons/IconSupport.vue'
     <template #icon>
       <DocumentationIcon />
     </template>
-    <template #heading>Documentation</template>
 
-    Vue’s
-    <a href="https://vuejs.org/" target="_blank" rel="noopener">official documentation</a>
-    provides you with all information you need to get started.
+    <template #heading>Testing Attribute Bindings v-bind</template>
+
+    <template #text>
+      <div id="a" class="a">Attribute Bidings Component's dynamicId</div>
+      <div v-bind:id="a">Attribute Bidings element's Id</div>
+
+      <div v-bind="objectOfAttrs">Binding Multiple Attributes from const objectOfAttrs={}</div>
+      <div :="objectOfAttrs">shorthand Binding Multiple Attributes ":" from const objectOfAttrs = {}</div>
+    </template>
   </WelcomeItem>
 
   <WelcomeItem>
@@ -44,7 +72,7 @@ import SupportIcon from './icons/IconSupport.vue'
       <EcosystemIcon />
     </template>
     <template #heading>Ecosystem</template>
-
+    
     Get official tools and libraries for your project:
     <a href="https://pinia.vuejs.org/" target="_blank" rel="noopener">Pinia</a>,
     <a href="https://router.vuejs.org/" target="_blank" rel="noopener">Vue Router</a>,
