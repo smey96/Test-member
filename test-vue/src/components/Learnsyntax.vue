@@ -15,7 +15,7 @@ defineProps({
     <div class="greetings">
         <h1 class="green">Neko: {{ msg }}</h1>
         <h3 style="color:red;">Baobao: {{ txt }}</h3> 
-        
+        <h3><font-awesome-icon icon="hat-wizard" /></h3> 
     </div>
 </template>
 
