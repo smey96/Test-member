@@ -10,6 +10,7 @@
       <p>
         <slot name="text"></slot>
       </p>
+      <slot></slot>
     </div>
   </div>
 </template>

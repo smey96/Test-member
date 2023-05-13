@@ -28,6 +28,12 @@ const objectOfAttrs = {
   class: 'green',
   style: 'font-family: courier;'
 }
+
+const id1= 'container';
+const class1= 'purple';
+const style1= 'font-family: "Times New Roman", Times, serif;'
+const a='myTest' // a is Component's dynamicId
+
 </script>
 
 <template>
@@ -39,12 +45,14 @@ const objectOfAttrs = {
     <template #heading>Testing Attribute Bindings v-bind</template>
 
     <template #text>
-      <div id="a" class="a">Attribute Bidings Component's dynamicId</div>
       <div v-bind:id="a">Attribute Bidings element's Id</div>
-
-      <div v-bind="objectOfAttrs">Binding Multiple Attributes from const objectOfAttrs={}</div>
-      <div :="objectOfAttrs">shorthand Binding Multiple Attributes ":" from const objectOfAttrs = {}</div>
+      - Binding Multiple Attributes
+      <div v-bind="objectOfAttrs">from define objectOfAttrs</div>
+      <div :id="id1" :class="class1" :style="style1">from single define one by one</div>
+      - Shorthand Binding Multiple Attributes
+      <div :="objectOfAttrs"> ":" from const objectOfAttrs = {}</div>
     </template>
+
   </WelcomeItem>
 
   <WelcomeItem>
@@ -52,7 +60,7 @@ const objectOfAttrs = {
       <ToolingIcon />
     </template>
     <template #heading>Tooling</template>
-
+    
     This project is served and bundled with
     <a href="https://vitejs.dev/guide/features.html" target="_blank" rel="noopener">Vite</a>. The
     recommended IDE setup is
@@ -63,7 +71,7 @@ const objectOfAttrs = {
     <a href="https://on.cypress.io/component" target="_blank">Cypress Component Testing</a>.
 
     <br />
-
+ 
     More instructions are available in <code>README.md</code>.
   </WelcomeItem>
 

@@ -40,8 +40,14 @@ Mustaches `{{ }}` cannot be used inside HTML attributes. Instead, use a `v-bind`
 ```
 <div v-bind:id="dynamicId"></div>
 ```
-The `v-bind` directive instructs Vue to keep the element's `id` attribute in sync with the component's `dynamicId` property. If the bound value is `null` or `undefined`, then the attribute will be removed from the rendered element.
+To `v-bind` one's attribute to another, it need to be define in JS.\
+Example (in "src/components/TheWelcome.vue"):
+>`const a = "myTest"`\
 
+>`<div v-bind:id="a">Test</div>`
+
+>Result:
+>> `<div id="myTest">Test</div>`
 - Shorthand:
 ```
 <div :id="dynamicId"></div>
