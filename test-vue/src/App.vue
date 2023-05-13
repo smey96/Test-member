@@ -16,7 +16,8 @@ import TheWelcome from './components/TheWelcome.vue'
     <TheWelcome msg ="<span>Message: {{ msg }}</span>"
                 msg1='<p>Using text interpolation: {{ rawHtml }}</p>'
                 msg11='<p>Using v-html directive: <span v-html="rawHtml"></span></p>'
-                msg2="<span style='color: red'>This should be red.</span>"/>
+                msg2="<span style='color: red'>This should be red.</span>"
+                number= "10"/>
   </main>
 </template>
 
