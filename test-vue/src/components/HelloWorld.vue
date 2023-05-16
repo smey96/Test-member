@@ -1,5 +1,6 @@
 <script setup>
 import { reactive } from 'vue'
+import { ref } from 'vue'
 
 const state = reactive({ count: 0 })
 
@@ -19,17 +20,25 @@ defineProps({
 function click(){
   alert("hi");
 }
-const raw = {}
-const proxy = reactive(raw)
 
-// proxy is NOT equal to the original.
-console.log(proxy === raw) // false
+const object = { foo: ref(1) }
+const {foo} = object
 
-// calling reactive() on the same object returns the same proxy
-console.log(reactive(raw) === proxy) // true
+//using ref() + reactive()
+const count1 = ref(0)
+const state1 = reactive({
+  count1
+})
+console.log(state1.count1) // 0
+state1.count1 = 1
+console.log(count1.value) // 1
 
-// calling reactive() on a proxy returns itself
-console.log(reactive(proxy) === proxy) // true
+//new assign ref() will relace the old ref()
+const otherCount = ref(2)
+state1.count1 = otherCount
+console.log(state1.count1) // 2
+// original ref is now disconnected from state.count1
+console.log(count1.value) // 1
 </script>
 
 <template>
@@ -40,14 +49,19 @@ console.log(reactive(proxy) === proxy) // true
       You’ve successfully created a project with
       <a href="https://vitejs.dev/" target="_blank" rel="noopener">Vite</a> +
       <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue 3</a>. 
-      <a @click="click()">click here </a>
-      <button @click="increment">
-        {{ state.count }}
-      </button>
+      
     </h3> 
     <h3>Testing v-html: </h3>
     <h5>- Using text interpolation:<br> {{ msg1 }}</h5>
     <h5>- Using v-html directive: <span v-html="msg1"></span></h5>
+    <h5>- Using import { ref } from "vue". foo = {{ foo + 1 }}</h5>
+    <h5>- Using Js Func for alert -><a @click="click()"> click here </a></h5>
+    <h5>- Using import { reactive } from "vue".  click to count++. ->
+      <button @click="increment">
+        {{ state.count }}
+      </button>
+    </h5>
+    <h5>- More about import and export for example check console.</h5>
   </div>
 </template>
 

@@ -6,6 +6,7 @@ import EcosystemIcon from './icons/IconEcosystem.vue'
 import CommunityIcon from './icons/IconCommunity.vue'
 import SupportIcon from './icons/IconSupport.vue'
 
+
 defineProps({
   msg: {
     type: String,
@@ -23,6 +24,7 @@ const id1= 'container';
 const class1= 'purple';
 const style1= 'font-family: "Times New Roman", Times, serif;'
 const a='myTest' // a is Component's dynamicId
+
 
 </script>
 
