@@ -39,6 +39,15 @@ state1.count1 = otherCount
 console.log(state1.count1) // 2
 // original ref is now disconnected from state.count1
 console.log(count1.value) // 1
+
+//map
+const books = reactive([ref('Vue 3 Guide')])
+// need .value here
+console.log(books[0].value)
+
+const map = reactive(new Map([['count', ref(0)]]))
+// need .value here
+console.log(map.get('count').value)
 </script>
 
 <template>
