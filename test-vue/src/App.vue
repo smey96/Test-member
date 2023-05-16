@@ -1,6 +1,7 @@
 <script setup>
 import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/TheWelcome.vue'
+
 </script>
 
 <template>
@@ -9,15 +10,12 @@ import TheWelcome from './components/TheWelcome.vue'
 
     <div class="wrapper">
       <HelloWorld msg="You did it!" msg1="<span style='color:red'>This should be Red.</span>"/>
-    </div>
+      </div>
+  
   </header>
 
   <main>
-    <TheWelcome msg ="<span>Message: {{ msg }}</span>"
-                msg1='<p>Using text interpolation: {{ rawHtml }}</p>'
-                msg11='<p>Using v-html directive: <span v-html="rawHtml"></span></p>'
-                msg2="<span style='color: red'>This should be red.</span>"
-                number= "10"/>
+    <TheWelcome msg ="<span>Message: {{ msg }}</span>"/>
   </main>
 </template>
 
