@@ -67,20 +67,6 @@ const now = computed(() => Date.now())
 function date(){
   return Date.now()
 }
-const firstName = ref('John')
-const lastName = ref('Doe')
-
-const fullName = computed({
-  // getter
-  get() {
-    return firstName.value + ' ' + lastName.value
-  },
-  // setter
-  set(newValue) {
-    // Note: we are using destructuring assignment syntax here.
-    [firstName.value, lastName.value] = newValue.split(' ')
-  }
-})
 const isActive = ref(true)
 const hasError = ref(false)
 </script>
@@ -107,7 +93,6 @@ const hasError = ref(false)
     <h5>- More about import and export for example check console.</h5>
     <h5>- Using computed() -> Has published <span>{{ publishedBookCount }}</span> books: <span>{{ publishedBookmsg }}</span></h5>
     <h5>- Using computer() {{ now }} vs. using function() {{ date() }}</h5>
-    <h5>{{ fullName  }}</h5>
   
   </div>
 </template>
