@@ -1,8 +1,8 @@
 <script setup>
-import { reactive } from 'vue'
-import { ref } from 'vue'
+import { reactive, ref, computed } from 'vue'
 
 const state = reactive({ count: 0 })
+
 
 function increment() {
   state.count++
@@ -45,14 +45,49 @@ const books = reactive([ref('Vue 3 Guide')])
 // need .value here
 console.log(books[0].value)
 
-const map = reactive(new Map([['count', ref(0)]]))
+const map = reactive(new Map([['count', ref(0)],['count1', ref(2)]]))
 // need .value here
-console.log(map.get('count').value)
+console.log(map.get('count1').value)
+
+const author = reactive({
+  name: 'John Doe',
+  books: [
+    'Vue 2 - Advanced Guide',
+    'Vue 3 - Basic Guide',
+    'Vue 4 - The Mystery'
+  ]
+})
+const publishedBookmsg = computed(() =>{
+  return author.books.length > 0 ? 'Yes' : "No"
+})
+const publishedBookCount = computed(() =>{
+  return author.books.length
+})
+const now = computed(() => Date.now())
+function date(){
+  return Date.now()
+}
+const firstName = ref('John')
+const lastName = ref('Doe')
+
+const fullName = computed({
+  // getter
+  get() {
+    return firstName.value + ' ' + lastName.value
+  },
+  // setter
+  set(newValue) {
+    // Note: we are using destructuring assignment syntax here.
+    [firstName.value, lastName.value] = newValue.split(' ')
+  }
+})
+const isActive = ref(true)
+const hasError = ref(false)
 </script>
 
 <template>
   <div class="greetings">
-    <h1 class="green">{{ msg }}</h1>
+    <h1 class="green" :class="{active: isActive, 'text-danger': hasError}">{{ msg }}</h1>
     
     <h3>
       You’ve successfully created a project with
@@ -60,8 +95,7 @@ console.log(map.get('count').value)
       <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue 3</a>. 
       
     </h3> 
-    <h3>Testing v-html: </h3>
-    <h5>- Using text interpolation:<br> {{ msg1 }}</h5>
+    <h5>- Using text interpolation: {{ msg1 }}</h5>
     <h5>- Using v-html directive: <span v-html="msg1"></span></h5>
     <h5>- Using import { ref } from "vue". foo = {{ foo + 1 }}</h5>
     <h5>- Using Js Func for alert -><a @click="click()"> click here </a></h5>
@@ -71,6 +105,10 @@ console.log(map.get('count').value)
       </button>
     </h5>
     <h5>- More about import and export for example check console.</h5>
+    <h5>- Using computed() -> Has published <span>{{ publishedBookCount }}</span> books: <span>{{ publishedBookmsg }}</span></h5>
+    <h5>- Using computer() {{ now }} vs. using function() {{ date() }}</h5>
+    <h5>{{ fullName  }}</h5>
+  
   </div>
 </template>
 
