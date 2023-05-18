@@ -5,6 +5,7 @@ import ToolingIcon from './icons/IconTooling.vue'
 import EcosystemIcon from './icons/IconEcosystem.vue'
 import CommunityIcon from './icons/IconCommunity.vue'
 import SupportIcon from './icons/IconSupport.vue'
+import { ref } from 'vue'
 
 
 defineProps({
@@ -19,12 +20,13 @@ const objectOfAttrs = {
   style: 'font-family: courier;'
 }
 
-var number = 1;
 const id1= 'container';
 const class1= 'purple';
 const style1= 'font-family: "Times New Roman", Times, serif;'
 const a='myTest' // a is Component's dynamicId
 
+const true2 = ref(true)
+const true1 = ref(true)
 
 </script>
 
@@ -51,9 +53,33 @@ const a='myTest' // a is Component's dynamicId
     <template #icon>
       <ToolingIcon />
     </template>
-    <template #heading>Tooling</template>
+    <template #heading>v-if, v-else-if and v-else</template>
     <template #text>
-    Math:  {{ number + 1 }}
+      <button @click="true1 = !true1">True 1</button>
+      <button @click="true2 = !true2">True 2</button>
+      <h5> 
+      {{'- this is true1.value = '+true1}}
+      <br> 
+      {{'- this is true2.value = '+true2}} 
+    </h5>
+    <h5>
+      if(true1 && true2) echo Hello!;<br>
+      elseif(true1 && !true2) echo Vue!;<br>
+      elseif(!true1 && true2) echo Test!;<br>
+      else(!true1 && !true2) echo none!;
+    </h5>
+    <h5 v-show="true1">- This is using 'v-show' with true1.value</h5>
+    <h5 v-if="true1 && true2">- Hello!</h5>
+    <h5 v-else-if="true1 && !true2">- Vue!</h5>
+    <h5 v-else-if="!true1 && true2">- Test!</h5>
+    <h5 v-else="!true1 && !true2">- none!</h5>
+    
+    <h5>
+      'v-if' vs. 'v-show' : <br>
+      'v-if' is used to conditionally render a block. The block will only be rendered if the directive's expression returns a truthy value. 
+      <br>
+      'v-show' will always be rendered and remain in the DOM; and is only toggle the 'display' CSS property and doesn't support {{ '<template>' }}, nor works with 'v-else'.
+    </h5>
   
     </template>
   

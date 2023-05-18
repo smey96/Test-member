@@ -69,20 +69,20 @@ function date(){
 }
 const isActive = ref(true)
 const hasError = ref(false)
+var number = 1;
+
 </script>
 
 <template>
   <div class="greetings">
     <h1 class="green" :class="{active: isActive, 'text-danger': hasError}">{{ msg }}</h1>
-    
     <h3>
       You’ve successfully created a project with
       <a href="https://vitejs.dev/" target="_blank" rel="noopener">Vite</a> +
-      <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue 3</a>. 
-      
+      <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue 3</a>.   
     </h3> 
     <h5>- Using text interpolation: {{ msg1 }}</h5>
-    <h5>- Using v-html directive: <span v-html="msg1"></span></h5>
+    <h5>- Using 'v-html' directive: <span v-html="msg1"></span></h5>
     <h5>- Using import { ref } from "vue". foo = {{ foo + 1 }}</h5>
     <h5>- Using Js Func for alert -><a @click="click()"> click here </a></h5>
     <h5>- Using import { reactive } from "vue".  click to count++. ->
@@ -91,9 +91,18 @@ const hasError = ref(false)
       </button>
     </h5>
     <h5>- More about import and export for example check console.</h5>
-    <h5>- Using computed() -> Has published <span>{{ publishedBookCount }}</span> books: <span>{{ publishedBookmsg }}</span></h5>
-    <h5>- Using computer() {{ now }} vs. using function() {{ date() }}</h5>
-  
+    <h5>- Using computed() -> Has published 
+      <span>
+        {{ publishedBookCount }}
+      </span> 
+      books: 
+      <span>
+        {{ publishedBookmsg }}
+      </span>
+    </h5>
+    <h5>- Using computed() {{ now }} vs. using function() {{ date() }}</h5> 
+    <h5>- Using Math:  {{ number + 1 }}</h5>
+    
   </div>
 </template>
 
@@ -107,7 +116,6 @@ h1 {
 h3 {
   font-size: 1.2rem;
 }
-
 .greetings h1,
 .greetings h3 {
   text-align: center;
