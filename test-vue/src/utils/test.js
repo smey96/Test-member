@@ -10,4 +10,3 @@ export class A{
 export function test(){
     console.warn('this is Func test() in test.js, aa')
 }
-

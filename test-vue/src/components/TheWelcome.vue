@@ -5,8 +5,37 @@ import ToolingIcon from './icons/IconTooling.vue'
 import EcosystemIcon from './icons/IconEcosystem.vue'
 import CommunityIcon from './icons/IconCommunity.vue'
 import SupportIcon from './icons/IconSupport.vue'
-import { ref } from 'vue'
+import Todolist from './icons/IconTodolist.vue'
+import TodoItem from '../utils/TodoItem.vue'
+import { ref, reactive } from 'vue'
 
+// ToDoList
+const newTodoText = ref('')
+const todos = ref([
+  {
+    id: 1,
+    title: 'Do the dishes'
+  },
+  {
+    id: 2,
+    title: 'Take out the trash'
+  },
+  {
+    id: 3,
+    title: 'Mow the lawn'
+  }
+])
+
+let nextTodoId = 4
+
+function addNewTodo() {
+  todos.value.push({
+    id: nextTodoId++,
+    title: newTodoText.value
+  })
+  newTodoText.value = ''
+}
+// ToDoList
 defineProps({
   msg: {
     type: String,
@@ -23,12 +52,15 @@ const id1 = 'container';
 const class1 = 'purple';
 const style1 = 'font-family: "Times New Roman", Times, serif;'
 const a = 'myTest' // a is Component's dynamicId
-
 const true2 = ref(true)
 const true1 = ref(true)
 const detail = ref(false)
 const detail1 = ref(false)
-const items = ref([{ message: 'Foo' }, { message: 'Bar' }])
+const myObject = reactive({
+  title: 'How to do lists in Vue',
+  author: 'Jane Doe',
+  publishedAt: '2016-04-10'
+})
 </script>
 <script>
 export default {
@@ -42,13 +74,15 @@ export default {
               { message: 'Bar',
                 children:[{a:'aaa'},
                           {a:'bbb'}]
+              },
+              {
+                message: 'Boo'
               }
              ]
     }
   }
 }
 </script>
-
 <template>
   <WelcomeItem>
     <template #icon>
@@ -100,22 +134,53 @@ export default {
     
     </template>
     <template #text v-else="detail1">
-      <h5>- v-for</h5>
-      <li v-for="(item, index) in items">
-        {{ index + "-" + item.message }}
-      </li>
-      <h5>- Nested 'v-for'</h5>
+      <h5>- Nested 'v-for' with object and array,</h5> 
+      <ul>
+        <li v-for="(value, key, index) in myObject">
+          {{ index }}. {{ key }}: {{ value }}
+        </li>
+      </ul>
       <ol v-for="(item1, index) in items1">
-        <li>{{ item1.message }}
+        <li>{{ index }}.{{ item1.message }}
           <ul v-for="childItem in item1.children">
             <li>{{ childItem.a }}</li>
           </ul>
         </li>
       </ol>
+      <h5>- 'v-for' with a Range : <span v-for="n in 10">{{ n + " " }}</span></h5>
+      <h5>- 'v-for' can use with {{ '<template>' }} too</h5>
+      <h5>- 'v-for' can use with 'v-if' but 'v-if' has a higher priority if use inside the same {{ '<tag>' }}.</h5>
+      
     </template>
   
   </WelcomeItem>
-
+  <WelcomeItem>
+    <template #icon>
+      <Todolist />
+    </template>
+    <template #heading>
+      To Do List
+    </template>
+    <template #text>
+      <form v-on:submit.prevent="addNewTodo">
+        <label for="new-todo">Add a todo</label><br>
+        <input
+          v-model="newTodoText"
+          id="new-todo"
+          placeholder="E.g. Feed the cat"
+        />
+        <button>Add</button>
+      </form>
+      <ul>
+        <todo-item
+          v-for="(todo, index) in todos"
+          :key="todo.id"
+          :title="todo.title"
+          @remove="todos.splice(index, 1)"
+        ></todo-item>
+      </ul>
+    </template>
+  </WelcomeItem>
   <WelcomeItem>
     <template #icon>
       <EcosystemIcon />
@@ -160,4 +225,5 @@ export default {
     us by
     <a href="https://vuejs.org/sponsor/" target="_blank" rel="noopener">becoming a sponsor</a>.
   </WelcomeItem>
+ 
 </template>
