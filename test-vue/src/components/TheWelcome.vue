@@ -7,7 +7,6 @@ import CommunityIcon from './icons/IconCommunity.vue'
 import SupportIcon from './icons/IconSupport.vue'
 import { ref } from 'vue'
 
-
 defineProps({
   msg: {
     type: String,
@@ -20,14 +19,34 @@ const objectOfAttrs = {
   style: 'font-family: courier;'
 }
 
-const id1= 'container';
-const class1= 'purple';
-const style1= 'font-family: "Times New Roman", Times, serif;'
-const a='myTest' // a is Component's dynamicId
+const id1 = 'container';
+const class1 = 'purple';
+const style1 = 'font-family: "Times New Roman", Times, serif;'
+const a = 'myTest' // a is Component's dynamicId
 
 const true2 = ref(true)
 const true1 = ref(true)
-
+const detail = ref(false)
+const detail1 = ref(false)
+const items = ref([{ message: 'Foo' }, { message: 'Bar' }])
+</script>
+<script>
+export default {
+  data() {
+    return {
+      parentMessage: 'Parent',
+      items1: [{ message: 'Foo' ,
+                children:[ {a:'aaaa'},
+                           {a:'bbbb'}]
+              }, 
+              { message: 'Bar',
+                children:[{a:'aaa'},
+                          {a:'bbb'}]
+              }
+             ]
+    }
+  }
+}
 </script>
 
 <template>
@@ -35,9 +54,7 @@ const true1 = ref(true)
     <template #icon>
       <DocumentationIcon />
     </template>
-
     <template #heading>Testing Attribute Bindings v-bind</template>
-
     <template #text>
       <div v-bind:id="a">Attribute Bidings element's Id</div>
       - Binding Multiple Attributes
@@ -46,15 +63,16 @@ const true1 = ref(true)
       - Shorthand Binding Multiple Attributes
       <div :="objectOfAttrs"> ":" from const objectOfAttrs = {}</div>
     </template>
-
   </WelcomeItem>
 
   <WelcomeItem>
     <template #icon>
       <ToolingIcon />
     </template>
-    <template #heading>v-if, v-else-if and v-else</template>
-    <template #text>
+    <template #heading>v-if, v-else-if, v-else, v-show and v-for</template>
+    <button @click="detail = !detail">v-if Details</button>
+    <button @click="detail1 = !detail1">v-for Details</button>
+    <template #text v-if="detail">
       <button @click="true1 = !true1">True 1</button>
       <button @click="true2 = !true2">True 2</button>
       <h5> 
@@ -73,14 +91,27 @@ const true1 = ref(true)
     <h5 v-else-if="true1 && !true2">- Vue!</h5>
     <h5 v-else-if="!true1 && true2">- Test!</h5>
     <h5 v-else="!true1 && !true2">- none!</h5>
-    
-    <h5>
+    <p>
       'v-if' vs. 'v-show' : <br>
       'v-if' is used to conditionally render a block. The block will only be rendered if the directive's expression returns a truthy value. 
       <br>
       'v-show' will always be rendered and remain in the DOM; and is only toggle the 'display' CSS property and doesn't support {{ '<template>' }}, nor works with 'v-else'.
-    </h5>
-  
+    </p>
+    
+    </template>
+    <template #text v-else="detail1">
+      <h5>- v-for</h5>
+      <li v-for="(item, index) in items">
+        {{ index + "-" + item.message }}
+      </li>
+      <h5>- Nested 'v-for'</h5>
+      <ol v-for="(item1, index) in items1">
+        <li>{{ item1.message }}
+          <ul v-for="childItem in item1.children">
+            <li>{{ childItem.a }}</li>
+          </ul>
+        </li>
+      </ol>
     </template>
   
   </WelcomeItem>
