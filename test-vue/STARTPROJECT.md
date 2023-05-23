@@ -84,4 +84,8 @@ You can bind them to a single element by using v-bind without an argument:
 + property = value of attribute.
 + v-bind (shorthand) = :
 + Mustaches = `{{ }}`
-+ 
++ Object = everything inside JS is an object,
+  >Example: `const object = { a: 1, b: 2, c: 3 }`
++ Array = you can put anything inside the js array but can only get the item by the index of the number
+    >Example: `const arr1 = [1,'abc',{a:1}]`
+    >>to get `'abc'` use `arr1[1]`

@@ -36,6 +36,7 @@ function addNewTodo() {
   newTodoText.value = ''
 }
 // ToDoList
+
 defineProps({
   msg: {
     type: String,
@@ -82,6 +83,14 @@ export default {
     }
   }
 }
+//v-model
+const selected = ref('')
+const selectRadio = ref('宝贝')
+const options = ref([
+  {text: '宝贝', value: 'baobei'},
+  {text: '宝宝', value: 'baobao'},
+  {text: '宝', value: 'bao'}
+])
 </script>
 <template>
   <WelcomeItem>
@@ -93,6 +102,7 @@ export default {
       <div v-bind:id="a">Attribute Bidings element's Id</div>
       - Binding Multiple Attributes
       <div v-bind="objectOfAttrs">from define objectOfAttrs</div>
+      <div v-for="item in objectOfAttrs" :key="item.id">from define key.id</div>
       <div :id="id1" :class="class1" :style="style1">from single define one by one</div>
       - Shorthand Binding Multiple Attributes
       <div :="objectOfAttrs"> ":" from const objectOfAttrs = {}</div>
@@ -150,7 +160,6 @@ export default {
       <h5>- 'v-for' with a Range : <span v-for="n in 10">{{ n + " " }}</span></h5>
       <h5>- 'v-for' can use with {{ '<template>' }} too</h5>
       <h5>- 'v-for' can use with 'v-if' but 'v-if' has a higher priority if use inside the same {{ '<tag>' }}.</h5>
-      
     </template>
   
   </WelcomeItem>
@@ -181,21 +190,26 @@ export default {
       </ul>
     </template>
   </WelcomeItem>
+
   <WelcomeItem>
     <template #icon>
       <EcosystemIcon />
     </template>
-    <template #heading>Ecosystem</template>
-    
-    Get official tools and libraries for your project:
-    <a href="https://pinia.vuejs.org/" target="_blank" rel="noopener">Pinia</a>,
-    <a href="https://router.vuejs.org/" target="_blank" rel="noopener">Vue Router</a>,
-    <a href="https://test-utils.vuejs.org/" target="_blank" rel="noopener">Vue Test Utils</a>, and
-    <a href="https://github.com/vuejs/devtools" target="_blank" rel="noopener">Vue Dev Tools</a>. If
-    you need more resources, we suggest paying
-    <a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">Awesome Vue</a>
-    a visit.
-  </WelcomeItem>
+    <template #heading>v-model</template>
+    <div>Selected: {{ selected }}</div>
+    <select v-model="selected">
+      <option disabled value="">Please Select one</option>
+      <option>A</option>
+      <option>B</option>
+      <option>C</option>
+    </select>
+    <div>Selected: {{ selectRadio }}</div>
+    <select v-model="selectRadio">
+      <option v-for="option in options" :value="option.text">
+        {{ option.value }}
+      </option>
+    </select>
+    </WelcomeItem>
 
   <WelcomeItem>
     <template #icon>
