@@ -7,7 +7,7 @@ import CommunityIcon from './icons/IconCommunity.vue'
 import SupportIcon from './icons/IconSupport.vue'
 import Todolist from './icons/IconTodolist.vue'
 import TodoItem from '../utils/TodoItem.vue'
-import { ref, reactive } from 'vue'
+import { ref, reactive, watch } from 'vue'
 
 // ToDoList
 const newTodoText = ref('')
@@ -36,6 +36,21 @@ function addNewTodo() {
   newTodoText.value = ''
 }
 // ToDoList
+// AskQuestion
+const question = ref('')
+const answer = ref('Question must contain a question mark.')
+watch(question, async(newQuestion, oldQuestion) =>{
+  if(newQuestion.indexOf('?') > -1){
+    answer.value = 'Thinking...'
+    try{
+      const res = await fetch('https://yesno.wtf/api')
+      answer.value = (await res.json()).answer
+    } catch(error) {
+      answer.value = 'Error! Could not reach the API. ' + error
+    }
+  }
+})
+// AskQuestion
 
 defineProps({
   msg: {
@@ -62,6 +77,16 @@ const myObject = reactive({
   author: 'Jane Doe',
   publishedAt: '2016-04-10'
 })
+//v-model
+const selected = ref('')
+const selectRadio = ref('宝贝')
+const options = ref([
+  {text: '宝贝', value: 'baobei'},
+  {text: '宝宝', value: 'baobao'},
+  {text: '宝', value: 'bao'}
+])
+const checkedNames = ref([])
+const picked = ref('')
 </script>
 <script>
 export default {
@@ -83,14 +108,6 @@ export default {
     }
   }
 }
-//v-model
-const selected = ref('')
-const selectRadio = ref('宝贝')
-const options = ref([
-  {text: '宝贝', value: 'baobei'},
-  {text: '宝宝', value: 'baobao'},
-  {text: '宝', value: 'bao'}
-])
 </script>
 <template>
   <WelcomeItem>
@@ -168,11 +185,11 @@ const options = ref([
       <Todolist />
     </template>
     <template #heading>
-      To Do List
+      To Do List and Ask Question
     </template>
     <template #text>
       <form v-on:submit.prevent="addNewTodo">
-        <label for="new-todo">Add a todo</label><br>
+        <label for="new-todo">- Add a todo</label><br>
         <input
           v-model="newTodoText"
           id="new-todo"
@@ -188,6 +205,12 @@ const options = ref([
           @remove="todos.splice(index, 1)"
         ></todo-item>
       </ul>
+      <input v-model.number="age" />
+      <p>
+        - Ask a yes/no question:
+        <input v-model="question" />
+      </p>
+      <p>{{ answer }}</p>
     </template>
   </WelcomeItem>
 
@@ -196,6 +219,9 @@ const options = ref([
       <EcosystemIcon />
     </template>
     <template #heading>v-model</template>
+
+    <template #text>
+
     <div>Selected: {{ selected }}</div>
     <select v-model="selected">
       <option disabled value="">Please Select one</option>
@@ -203,12 +229,34 @@ const options = ref([
       <option>B</option>
       <option>C</option>
     </select>
+
     <div>Selected: {{ selectRadio }}</div>
     <select v-model="selectRadio">
       <option v-for="option in options" :value="option.text">
         {{ option.value }}
       </option>
     </select>
+
+    <div>Checked Names: {{ checkedNames }}</div>
+    <input type="checkbox" id="bao" value="bao" v-model="checkedNames">
+    <label for="bao">宝</label><br>
+
+    <input type="checkbox" id="baobao" value="baobao" v-model="checkedNames">
+    <label for="baobao">宝宝</label><br>
+    
+    <input type="checkbox" id="baobei" value="baobei" v-model="checkedNames">
+    <label for="baobei">宝贝</label><br>
+
+    <div>Radio: {{ picked }}</div>
+
+    <input type="radio" id="one" value="One" v-model="picked" true-value="yes" false-value="no"/>
+    <label for="one">One</label><br>
+
+    <input type="radio" id="two" value="Two" v-model="picked" true-value="no" false-value="no"/>
+    <label for="two">Two</label>
+
+  </template>
+
     </WelcomeItem>
 
   <WelcomeItem>
