@@ -79,11 +79,11 @@ const myObject = reactive({
 })
 //v-model
 const selected = ref('')
-const selectRadio = ref('宝贝')
+const selectRadio = ref('c')
 const options = ref([
-  {text: '宝贝', value: 'baobei'},
-  {text: '宝宝', value: 'baobao'},
-  {text: '宝', value: 'bao'}
+  {text: 'c', value: 'cc'},
+  {text: 'b', value: 'bb'},
+  {text: 'a', value: 'aa'}
 ])
 const checkedNames = ref([])
 const picked = ref('')
@@ -205,7 +205,7 @@ export default {
           @remove="todos.splice(index, 1)"
         ></todo-item>
       </ul>
-      <input v-model.number="age" />
+      <!-- <input v-model.number="age" /> -->
       <p>
         - Ask a yes/no question:
         <input v-model="question" />
@@ -239,13 +239,13 @@ export default {
 
     <div>Checked Names: {{ checkedNames }}</div>
     <input type="checkbox" id="bao" value="bao" v-model="checkedNames">
-    <label for="bao">宝</label><br>
+    <label for="bao">a</label><br>
 
     <input type="checkbox" id="baobao" value="baobao" v-model="checkedNames">
-    <label for="baobao">宝宝</label><br>
+    <label for="baobao">b</label><br>
     
     <input type="checkbox" id="baobei" value="baobei" v-model="checkedNames">
-    <label for="baobei">宝贝</label><br>
+    <label for="baobei">c</label><br>
 
     <div>Radio: {{ picked }}</div>
 
