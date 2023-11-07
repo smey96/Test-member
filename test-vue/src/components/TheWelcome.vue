@@ -9,6 +9,10 @@ import Todolist from './icons/IconTodolist.vue'
 import TodoItem from '../utils/TodoItem.vue'
 import { ref, reactive, watch } from 'vue'
 
+const Test = () =>{
+  return "test";
+}
+
 // ToDoList
 const newTodoText = ref('')
 const todos = ref([
