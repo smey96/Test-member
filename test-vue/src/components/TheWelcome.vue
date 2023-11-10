@@ -12,7 +12,9 @@ import { ref, reactive, watch } from 'vue'
 const Test = () =>{
   return "test123"
 }
-
+const Test2 = () =>{
+  return "test";
+}
 // ToDoList
 const newTodoText = ref('')
 const todos = ref([
