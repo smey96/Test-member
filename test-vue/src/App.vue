@@ -1,29 +1,15 @@
 <script setup>
 import TheWelcome from './components/TheWelcome.vue'
-<<<<<<< HEAD
-
-=======
 import Learnsyntax from './components/Learnsyntax.vue'
->>>>>>> vue2
 </script>
 
 
 <template>
-<<<<<<< HEAD
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" msg1="<span style='color:red'>This should be Red.</span>"/>
-      </div>
-  
-=======
   <header>    
     <img style="width:125px; height:125px; margin:10px" src="./components/images/heartcat.jpg" />
     <div class="wrapper">
       <Learnsyntax msg="Meow!!" txt="piu piu~" />
     </div>
->>>>>>> vue2
   </header>
 
   <main>
