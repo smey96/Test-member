@@ -1,11 +1,15 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/TheWelcome.vue'
+<<<<<<< HEAD
 
+=======
+import Learnsyntax from './components/Learnsyntax.vue'
+>>>>>>> vue2
 </script>
 
 
 <template>
+<<<<<<< HEAD
   <header>
     <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
 
@@ -13,6 +17,13 @@ import TheWelcome from './components/TheWelcome.vue'
       <HelloWorld msg="You did it!" msg1="<span style='color:red'>This should be Red.</span>"/>
       </div>
   
+=======
+  <header>    
+    <img style="width:125px; height:125px; margin:10px" src="./components/images/heartcat.jpg" />
+    <div class="wrapper">
+      <Learnsyntax msg="Meow!!" txt="piu piu~" />
+    </div>
+>>>>>>> vue2
   </header>
 
   <main>
@@ -28,6 +39,11 @@ header {
 .logo {
   display: block;
   margin: 0 auto 2rem;
+}
+.icon {
+    margin-left: 12px;
+    font-size: 36px;
+    color: #222;
 }
 
 @media (min-width: 1024px) {
