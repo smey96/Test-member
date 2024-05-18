@@ -11,7 +11,7 @@ The most basic form of data binding is text interpolation using the Mustache syn
 <span>Message: {{ msg }} </span>
 ```
 >App.vue
->>`<HelloWorld msg="You did it!" />`
+>>`<HelloWorld msg="You did it123!" />`
 >>
 >HelloWorld.vue 
 >> `<h1 class="green">{{ msg }}</h1>`
